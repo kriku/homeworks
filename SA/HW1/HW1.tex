@@ -1,0 +1,188 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.28,0,0.82}
+\definecolor{myblue}{rgb}{0.8,0.2,0.8}
+
+\lstset{
+  belowskip=-12pt, %\baselineskip
+  backgroundcolor=\color{white},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{mygreen},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  % frame=single,
+  keepspaces=true,
+  keywordstyle=\color{myblue},
+  language=Java,
+  otherkeywords={*,...},
+  % numbers=left,
+  % numbersep=5pt,
+  % numberstyle=\ttfamily\color{mygray},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{mymauve},
+  tabsize=2,
+  title=\lstname
+}
+
+\author{Krikun Georgy}
+\title{Software Architecture\\Homework 1}
+\begin{document}
+\maketitle
+\newpage
+\section{Question}
+\textbf{a - Correct}
+\begin{lstlisting}
+public abstract class Square implements Shape {
+	public abstract void setColor(String s);
+}
+\end{lstlisting}
+In this case defined public abstract class with public abstract method setColor(String s)
+This method defined without body, and don't violate syntax.\\
+
+\textbf{b - Abstract methods do not specify a body}
+\begin{lstlisting}
+public abstract class Square implements Shape {
+	public abstract void setColor(String s) {}
+}
+\end{lstlisting}
+This variant trying define abstract method with empty body.
+But for abstract methods we can't define body, ever.\\
+
+\textbf{c - The type Shape cannot be the superclass of Square; a superclass must be a class}
+
+\begin{lstlisting}
+public abstract class Square extends Shape {
+	public void setColor(String s) {}
+}
+\end{lstlisting}
+For inheritance in Java we can extends some classes, but not interfaces.
+We can implement interfaces or extend interfaces by another, but can't extend class with interface.\\
+
+\textbf{d - Correct}
+
+\begin{lstlisting}
+public abstract class Square implements Shape {
+	public void setColor(Integer i) {}
+}
+\end{lstlisting}
+In this implementation we have correct definition of class Square, which implements interface Shape.\\
+
+\textbf{e - Correct}
+
+\begin{lstlisting}
+public abstract class Square implements Shape {
+	public void setColor(String s) {}
+	public void setColor(Integer i) {}
+}
+\end{lstlisting}
+For overloading methods in Java we can define different methods with same name, for different types and arity of parameters\\
+
+\section{Question}
+
+\textbf{a - correct}
+\begin{lstlisting}
+public Flower getType() { return this; }
+\end{lstlisting}
+Redefine method from Plant class, which return instance of Plant type but with new one, which return instance of Flower\\
+
+\textbf{b - incorrect}
+\begin{lstlisting}
+public String getType() { return "this"; }
+\end{lstlisting}
+We can't override method, what returns incompatible with superclass type\\
+
+\textbf{c - correct}
+\begin{lstlisting}
+public Plant getType() { return this;}
+\end{lstlisting}
+This method return Plant instance from Flower, downcast instance to Plant\\
+
+\textbf{d - correct}
+\begin{lstlisting}
+public Tulip getType() { return new Tulip(); }
+\end{lstlisting}
+As soon as Tulip inherited from Plant\\
+
+\textbf{e - incorrect}
+\begin{lstlisting}
+public String getType() { return this; }
+\end{lstlisting}
+This variant shows two violations:
+\begin{itemize}
+  \item
+First one - type String not compatible with Plant type
+  \item
+Second one - \texttt{this} - instance of Flower type, but method declared with String return type
+\end{itemize}
+
+\section{Question}
+\textbf{returns 9}\\
+On first step created static field \texttt{y}, of \texttt{Uber} class, and initialize with value 2.
+Then try create \texttt{Minor} instance, by calling constructor \texttt{Uber(int x)}.
+This constructor call default constructor for \texttt{Uber()}, which multiply value \texttt{y} twice.
+After this evaluation returns to \texttt{Minor()} constructor, which increment value \texttt{y} by three.
+So for static field y we have value 9, and as soon as value public we can access it from other classes.
+\newpage
+
+\section{Question}
+\textbf{a - incorrect}
+\begin{lstlisting}
+PitBull p2 = (PitBull) dog1;
+\end{lstlisting}
+\texttt{dog1} created by effective class \texttt{Dog}, we can't cast parent class to child,
+because child class can be ``bigger'' than parent.\\
+
+\textbf{b - correct}
+\begin{lstlisting}
+PitBull p2 = (PitBull) dog2;
+\end{lstlisting}
+In this case \texttt{dog2} instance created by \texttt{PitBull} constructor, so in memory we have
+full \texttt{PitBull} instance, which downcast to \texttt{Dog} in under the hod, when we assign to \texttt{dog2}.
+So when we explicitly cast instance to \texttt{PitBull}, we can do it, because we have \texttt{PitBull} instance in memory.\\
+
+\textbf{c - incorrect}
+\begin{lstlisting}
+PitBull p2 = dog2;
+\end{lstlisting}
+But in this case, we didn't cast it explicitly. Compiler don't know, how to cast that, because in general
+we can't say, that instance on this reference is \texttt{PitBull}.\\
+
+\section{Question}
+
+\textbf{a - incorrect}
+\begin{lstlisting}
+x2.do2();
+\end{lstlisting}
+The method \texttt{do2()} is undefined for the type \texttt{X}
+\texttt{x2} is instance of \texttt{X} class, so when we call \texttt{Y} constructor,
+we create \texttt{Y} instance, but cast it to \texttt{X} class (we can do it because \texttt{Y} extends \texttt{X})
+But \texttt{X} class haven't got \texttt{do2} method.\\
+
+\textbf{b - correct}
+\begin{lstlisting}
+((Y)x2).do2();
+\end{lstlisting}
+This is legal call of \texttt{do2} method, \texttt{Y} class, because we create \texttt{x2} object with \texttt{Y} constructor.\\
+
+\textbf{c - incorrect}
+\begin{lstlisting}
+(Y)x2.do2();
+\end{lstlisting}
+Cast priority less than methods call.
+So we can't call method before cast to \texttt{Y} type.
+The method \texttt{do2()} is undefined for the type \texttt{X}.
+
+\end{document}

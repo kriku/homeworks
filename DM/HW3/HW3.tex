@@ -1,0 +1,301 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+
+\author{Krikun Georgy}
+\title{Discrete Math\\Homework 3}
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\section{Question}
+\label{sec:Question}
+Write negations for each of the following statements:
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  John is 6 feet tall and he weights at least 200 pounds.
+
+  Negotiation:
+
+  This is not the case that John is 6 feet tall and he weights at least 200 pounds.
+  \item
+  The bus was late or Tom’s watch was slow.
+
+  Negotiation:
+
+  This is not the case that the bus was late or Tom’s watch was slow.
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Construct truth tables for the statement forms:
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  $(\neg p \vee q)\rightarrow \neg q$\\
+
+  \begin{tabular}{|cc|cccc|}
+    \hline
+    p & q & $\neg p$ & $\neg p \vee q$ & $\neg q$ & $(\neg p \vee q)\rightarrow \neg q$\\
+    \hline
+    0 & 0 & 1 & 1 & 1 & 1\\
+    0 & 1 & 1 & 1 & 0 & 1\\
+    1 & 0 & 0 & 0 & 1 & 0\\
+    1 & 1 & 0 & 1 & 0 & 1\\
+    \hline
+  \end{tabular}
+  \item
+  $(p \wedge \neg q)\rightarrow r$\\
+
+  \begin{tabular}{|ccc|ccc|}
+    \hline
+    p & q & r & $\neg q$ & $p \wedge \neg q$ & $(p \wedge \neg q)\rightarrow r$\\
+    \hline
+    0 & 0 & 0 & 1 & 0 & 1\\
+    0 & 0 & 1 & 1 & 0 & 0\\
+    0 & 1 & 0 & 0 & 0 & 1\\
+    0 & 1 & 1 & 0 & 0 & 0\\
+    1 & 0 & 0 & 1 & 1 & 1\\
+    1 & 0 & 1 & 1 & 1 & 1\\
+    1 & 1 & 0 & 0 & 0 & 1\\
+    1 & 1 & 1 & 0 & 0 & 0\\
+    \hline
+  \end{tabular}
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Let \textbf{p}, \textbf{q}, and \textbf{r} be the propositions:\\
+\textbf{p}: Grizzly bears have been seen in the area.\\
+\textbf{q}: Hiking is safe on the trail.\\
+\textbf{r}: Berries are ripe along the trail.\\
+Write these propositions using \textbf{p}, \textbf{q}, and \textbf{r} and logical connectives (including negations).
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  Berries are ripe along the trail, but grizzly bears have not been seen in the area.
+
+  $r \wedge \neg p$
+  \item
+  Grizzly bears have not been seen in the area and hiking on the trail is safe, but berries are ripe along the trail.
+
+  $\neg p \wedge q \wedge r$
+  \item
+  If berries are ripe along the trail, hiking is safe if and only if grizzly bears have not been seen in the area.
+
+  $r \rightarrow (q \leftrightarrow \neg p)$
+\end{enumerate}
+
+
+\section{Question}
+\label{sec:Question}
+Find the bitwise OR, bitwise AND, and bitwise XOR of each of these pairs of bit strings.
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  101 1110, 010 0001
+
+  \begin{tabular}{|c|ccccccc|}
+    \hline
+    a       & 1 & 0 & 1 & 1 & 1 & 1 & 0\\
+    b       & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
+    \hline
+    $|$     & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    \&      & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    $\wedge$& 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    \hline
+  \end{tabular}
+  \item
+  1111 0000, 1010 1010
+
+  \begin{tabular}{|c|cccccccc|}
+    \hline
+    a       & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+    b       & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+    \hline
+    $|$     & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    \&      & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0\\
+    $\wedge$& 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0\\
+    \hline
+  \end{tabular}
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Given any statement form, is it possible to find a logically equivalent form that uses only $\neg$ and $\wedge$?
+
+\emph{I think the answer is YES. Because disjuction we can represent as conjuction. With this three function we also can represent all another, for any statement form.}\\
+
+$p \vee q \equiv \neg (\neg p \wedge \neg q)$
+
+\section{Question}
+\label{sec:Question}
+Prove the following:
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  Disjunctions is Commutative?
+
+  $(p \vee q)$, is equivalent to $(q \vee p)$?
+
+  \begin{tabular}{|cc|cc|}
+    \hline
+    p & q & $p \vee q$ & $q \vee p$\\
+    \hline
+    0 & 0 & 0 & 0\\
+    0 & 1 & 1 & 1\\
+    1 & 0 & 1 & 1\\
+    1 & 1 & 1 & 1\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are logically equivalent, because their truth tables are same.}
+
+  \item
+  Disjunction is Associative?
+
+  $(p \vee q) \vee r$, is equivalent to $p \vee (q \vee r)$?
+
+  \begin{tabular}{|ccc|cccc|}
+    \hline
+    p & q & r & $p \vee q$ & $q \vee r$ & $(p \vee q) \vee r$ & $p \vee (q \vee r)$\\
+    \hline
+    0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 1 & 0 & 1 & 1 & 1\\
+    0 & 1 & 0 & 1 & 1 & 1 & 1\\
+    0 & 1 & 1 & 1 & 1 & 1 & 1\\
+    1 & 0 & 0 & 1 & 0 & 1 & 1\\
+    1 & 0 & 1 & 1 & 1 & 1 & 1\\
+    1 & 1 & 0 & 1 & 1 & 1 & 1\\
+    1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are logically equivalent, because their truth tables are same.}
+
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Prove that the statements given bellow are logically equivalent (or not). Justify your answers.
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  $\neg (p \wedge q)$ and $\neg p \wedge \neg q$?
+
+  \begin{tabular}{|cc|cc|}
+    \hline
+    p & q & $\neg (p \wedge q)$ & $\neg p \wedge \neg q$\\
+    \hline
+    0 & 0 & 1 & 1\\
+    0 & 1 & 1 & 0\\
+    1 & 0 & 1 & 0\\
+    1 & 1 & 0 & 0\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are not logically equivalent, because their truth tables are different.}
+
+  \item
+  $\neg (p \wedge q)$ and $\neg p \vee \neg q$?
+
+  \begin{tabular}{|cc|cc|}
+    \hline
+    p & q & $\neg (p \wedge q)$ & $\neg p \vee \neg q$\\
+    \hline
+    0 & 0 & 1 & 1\\
+    0 & 1 & 1 & 1\\
+    1 & 0 & 1 & 1\\
+    1 & 1 & 0 & 0\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are logically equivalent, because their truth tables are same.}
+
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Prove the statements:
+
+\begin{enumerate}[label=\alph*)]
+  \item
+  Is implication logically equivalent to its contrapositive?\\
+  $(p \rightarrow q)$ and $(\neg p \rightarrow \neg q)$?
+
+  \begin{tabular}{|cc|cc|}
+    \hline
+    p & q & $(p \rightarrow q)$ & $(\neg p \rightarrow \neg q)$\\
+    \hline
+    0 & 0 & 1 & 1\\
+    0 & 1 & 0 & 1\\
+    1 & 0 & 1 & 0\\
+    1 & 1 & 1 & 1\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are not logically equivalent, because their truth tables are different.}
+
+  \item
+  Is converse logically equivalent to the inverse?\\
+  $(q \rightarrow p)$ and $(\neg p \rightarrow \neg q)$?
+
+  \begin{tabular}{|cc|cc|}
+    \hline
+    p & q & $(q \rightarrow p)$ & $(\neg p \rightarrow \neg q)$\\
+    \hline
+    0 & 0 & 1 & 1\\
+    0 & 1 & 1 & 1\\
+    1 & 0 & 0 & 0\\
+    1 & 1 & 1 & 1\\
+    \hline
+  \end{tabular}
+
+  \emph{This statements are logically equivalent, because their truth tables are same.}
+
+\end{enumerate}
+
+\section{Question}
+\label{sec:Question}
+Symbolically prove the following with explanation on each step on used law.
+
+\begin{enumerate}
+  \item
+  $(p \leftrightarrow q)$ equivalent to $(p \rightarrow q) \rightarrow (q \rightarrow p)$?
+
+  Consider right side of statement:
+
+  $(p \rightarrow q) \rightarrow (q \rightarrow p) \equiv (\neg p \vee q) \rightarrow (\neg q \vee p)$
+
+  $(\neg p \vee q) \rightarrow (\neg q \vee p) \equiv \neg (\neg p \vee q) \vee (\neg q \vee p)$
+
+  $\neg (\neg p \vee q) \vee (\neg q \vee p) \equiv {\color{Green} (p \wedge \neg q) \vee (\neg q } \vee p)$
+
+
+  \item
+  $(p \wedge q)$ equivalent to $(p \vee \neg q) \wedge q$?
+
+  $(p \wedge q) \equiv (p \vee \neg q) \wedge q$
+  \hfill
+  {\color{Lavender} Initial statement}
+
+  $(p \wedge q) \equiv q \wedge (p \vee \neg q)$
+  \hfill
+  {\color{Lavender} Commutative law}
+
+  $(p \wedge q) \equiv (q \wedge p) \vee (q \wedge \neg q)$
+  \hfill
+  {\color{Lavender} Distributive law}
+
+  $(p \wedge q) \equiv (q \wedge p) \vee C$
+  \hfill
+  {\color{Lavender} Identity law}
+
+  $(p \wedge q) \equiv (q \wedge p)$
+  \hfill
+  {\color{Lavender} As desired}
+
+\end{enumerate}
+
+\end{document}
